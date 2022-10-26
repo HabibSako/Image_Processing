@@ -1,0 +1,22 @@
+#Habib Şako histogramı bulan python kodu
+import cv2
+import numpy
+from numpy.array_api import zeros
+
+foto = cv2.imread("eyfel.png") #fotoğrafı alma
+
+cv2.imshow("eyfel",foto) #foto gösterimi
+cv2.waitKey() #foto nun  sürekli açık kalması
+
+print(foto.shape)   #yükseklik-genişlik-kanal sayısı
+
+#yogunluk = foto[]#belirili bir noktadaki renk yoğunluğunu veriyor (3 parametre) a1 satır no a2 sütun no a3 kanal
+#histogram bulan kod kısmı
+u=0
+
+hist = zeros(256)
+[w,h] = foto.shape(foto)
+for v in range (0, u<h) #range belirli bir aralık oluşturmaya yarıyor
+    for u in range (0, u<w)
+        i = foto(u,v)
+        hist[i] = hist[i]+1
