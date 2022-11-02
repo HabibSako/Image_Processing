@@ -1,0 +1,30 @@
+#Görüntünün tersini/negatifini alan python kodu
+#Habib Şako
+import cv2
+import numpy
+from matplotlib import pyplot as plt
+from numpy.array_api import zeros
+
+foto = cv2.imread("eyfel.png")  # fotoğrafı alma
+
+[satir, sutun, x] = foto.shape  # foto ölçüleri
+negativeFoto = numpy.zeros([satir, sutun], dtype=numpy.uint8)
+
+#Fotodaki en yüksek değerli pikselin bulunması
+
+k = 0
+enBuyuk = 0
+for n in range(0, satir):
+    for m in range(0, sutun):
+        k = foto[n, m]
+        if enBuyuk < k :
+            enBuyuk = k
+
+#Fotonun tersinin/negatifinin alınması
+
+for i in range(0, satir, 1):
+    for j in range(0, sutun, 1):
+        negativeFoto[i, j] = enBuyuk - foto[i, j]
+
+cv2.imshow(negativeFoto)
+cv2.waitkey()
